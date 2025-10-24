@@ -7,4 +7,5 @@ const registerSchema = z.object({
     role: z.enum(["buyers", "store", "factory"]).default("buyers").optional()
 })
 
+
 export { registerSchema }  
