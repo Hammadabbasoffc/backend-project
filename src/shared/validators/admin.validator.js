@@ -41,13 +41,9 @@ const createAdminSchema = z.object({
         .regex(cnicRegex, "Invalid Pakistani CNIC format (e.g., 12345-1234567-1)"),
 
     age: z
-        .number({ message: "Age must be a number" })
-        .min(18, "Age must be at least 18")
-        .max(80, "Age must be less than 80"),
+        .string({ message: "Age must be a string" })
 
-    isBlocked: z.boolean().optional(),
 
-    image: z.string().optional(),
 });
 
 const updateAdminSchema = createAdminSchema.partial();

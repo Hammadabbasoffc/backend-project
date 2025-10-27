@@ -12,7 +12,12 @@ const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex
 
 class S3UploadHelper {
     static async uploadFile(file, folder = '') {
+
+
         try {
+
+            console.log(file);
+
             if (!file || !file.buffer) {
                 throw new Error('Invalid file object');
             }

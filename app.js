@@ -5,6 +5,7 @@ import { errorHandler } from "./src/core/middleware/errorHandler.js";
 import authRouter from "./src/modules/auth/auth.route.js";
 import userRouter from "./src/modules/user/user.route.js";
 import categoryRouter from "./src/modules/category/category.route.js";
+import adminRouter from "./src/modules/admin/admin.route.js";
 
 
 const app = express()
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/users", userRouter)
 app.use('/api/v1/categories', categoryRouter)
+app.use('/api/v1/admins', adminRouter);
 
 app.get('/health', (req, res) => {
     res.status(200).json({
