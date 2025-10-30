@@ -1,10 +1,12 @@
-import Router from "express"
-import { validate } from "../../core/middleware/validate.js"
-import { registerSchema } from "../../shared/validators/user.validator.js"
-import { registerUser } from "./auth.controller.js"
+import { Router } from "express";
+import { logIn, logOut } from "./auth.controller.js";
+import { loginSchema } from "../../shared/validators/auth.validator.js";
+import { validate } from "../../core/middleware/validate.js";
+import isLoggedIn from "../../core/middleware/isLoggedin.js";
 
-const authRouter = Router()
+const authRouter = Router();
 
-authRouter.post("/register", validate(registerSchema), registerUser)
+authRouter.post("/login", validate(loginSchema), logIn);
+authRouter.post("/logout", isLoggedIn, logOut);
 
-export default authRouter
+export default authRouter;
